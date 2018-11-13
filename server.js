@@ -21,11 +21,13 @@ if (process.env.NODE_ENV === 'production') {
 // We are not in production so load up our certificates to be able to 
 // run the server in https mode locally
 else {
-  const certOptions = {
-    key: fs.readFileSync(path.resolve('certs/server.key')),
-    cert: fs.readFileSync(path.resolve('certs/server.crt'))
-  }
-  server = https.createServer(certOptions, app)
+  // const certOptions = {
+  //   key: fs.readFileSync(path.resolve('../../../cert/server.key')),
+  //   cert: fs.readFileSync(path.resolve('../../../cert/server.crt'))
+  // }
+  // server = https.createServer(certOptions, app)
+
+  server = http.createServer(app)
 }
 
 // Setup for passport and to accept JSON objects
@@ -41,7 +43,8 @@ app.use(cors({
 // saveUninitialized: true allows us to attach the socket id to the session
 // before we have athenticated the user
 app.use(session({ 
-  secret: process.env.SESSION_SECRET, 
+  // secret: process.env.SESSION_SECRET, 
+  secret: 'KeyboardKittens', 
   resave: true, 
   saveUninitialized: true
 }))
