@@ -61,6 +61,6 @@ app.get('/wake-up', (req, res) => res.send('👍'))
 // Direct all other requests at our auth router
 app.use('/', authRouter)
 
-server.listen(process.env.PORT || 8080, () => {
+server.listen(process.env.PORT || 80, () => {
   console.log('listening...')
 })
