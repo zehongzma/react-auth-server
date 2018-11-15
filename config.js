@@ -1,12 +1,15 @@
 const providers = ['twitter', 'google', 'facebook', 'github']
 
+const domain = "hkappdlv006"
+const port_listening = 8080
+
 const callbacks = providers.map(provider => {
-  return `http://hkappdlv006:8080/${provider}/callback`
+  return `https://${domain}:${port_listening}/${provider}/callback`
 })
 
 const [twitterURL, googleURL, facebookURL, githubURL] = callbacks
 
-exports.CLIENT_ORIGIN = ['http://hkappdlv006:3000']
+exports.CLIENT_ORIGIN = [`https://${domain}:3000`]
 
 exports.TWITTER_CONFIG = {
   consumerKey: process.env.TWITTER_KEY,
@@ -32,3 +35,5 @@ exports.GITHUB_CONFIG = {
   clientSecret: process.env.GITHUB_SECRET,
   callbackURL: githubURL
 }
+
+exports.PORT = port_listening
