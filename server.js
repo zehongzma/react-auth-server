@@ -12,12 +12,8 @@ const authRouter = require('./lib/auth.router')
 const passportInit = require('./lib/passport.init')
 const { SESSION_SECRET, CLIENT_ORIGIN, PORT} = require('./config')
 const app = express()
-<<<<<<< HEAD
 
 let server = http.createServer(app)
-=======
-let server = server = http.createServer(app)
->>>>>>> cloud
 
 // Setup for passport and to accept JSON objects
 app.use(express.json())
