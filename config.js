@@ -1,6 +1,6 @@
 const providers = ['twitter', 'google', 'facebook', 'github']
 
-const domain = '65.52.167.160'
+const domain = 'hkappdlv006'
 const port_listening = 8080
 
 const callbacks = providers.map(provider => {
