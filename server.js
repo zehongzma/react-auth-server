@@ -10,7 +10,7 @@ const cors = require('cors')
 const socketio = require('socket.io')
 const authRouter = require('./lib/auth.router')
 const passportInit = require('./lib/passport.init')
-const { SESSION_SECRET, CLIENT_ORIGIN, PORT} = require('./config')
+const { SESSION_SECRET, CLIENT_ORIGIN, PORT, URL} = require('./config')
 const app = express()
 
 let server = http.createServer(app)
@@ -49,4 +49,5 @@ app.use('/', authRouter)
 
 server.listen(process.env.PORT || PORT, () => {
   console.log('listening...')
+  console.log(URL)
 })

@@ -37,3 +37,4 @@ exports.GITHUB_CONFIG = {
 }
 
 exports.PORT = port_listening
+exports.URL = callbacks
