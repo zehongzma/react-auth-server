@@ -1,16 +1,15 @@
 const providers = ['twitter', 'google', 'facebook', 'github']
 
+const domain = "localhost"
+const port_listening = 8080
+
 const callbacks = providers.map(provider => {
-  return process.env.NODE_ENV === 'production'
-    ? `https://react-auth-twitter.herokuapp.com/${provider}/callback`
-    : `https://localhost:8080/${provider}/callback`
+  return `https://${domain}:${port_listening}/${provider}/callback`
 })
 
 const [twitterURL, googleURL, facebookURL, githubURL] = callbacks
 
-exports.CLIENT_ORIGIN = process.env.NODE_ENV === 'production'
-  ? 'https://react-auth-twitter.netlify.com'
-  : ['https://127.0.0.1:3000', 'https://localhost:3000']
+exports.CLIENT_ORIGIN = [`https://${domain}:3000`]
 
 exports.TWITTER_CONFIG = {
   consumerKey: process.env.TWITTER_KEY,
@@ -36,3 +35,5 @@ exports.GITHUB_CONFIG = {
   clientSecret: process.env.GITHUB_SECRET,
   callbackURL: githubURL
 }
+
+exports.PORT = port_listening
