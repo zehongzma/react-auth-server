@@ -13,7 +13,13 @@ const passportInit = require('./lib/passport.init')
 const { SESSION_SECRET, CLIENT_ORIGIN, PORT, URL} = require('./config')
 const app = express()
 
-let server = http.createServer(app)
+let server
+
+const certOptions = {
+  key: fs.readFileSync('certs/cloud.key'),
+  cert: fs.readFileSync('certs/cloud.crt')
+}
+server = https.createServer(certOptions, app)
 
 // Setup for passport and to accept JSON objects
 app.use(express.json())
@@ -49,5 +55,4 @@ app.use('/', authRouter)
 
 server.listen(process.env.PORT || PORT, () => {
   console.log('listening...')
-  console.log(URL)
 })
